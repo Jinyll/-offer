@@ -32,7 +32,7 @@ public:
                 break;
             }
             if(rotateArray[start]==rotateArray[end] && rotateArray[start]==rotateArray[mid])//处理10111
-                return sequenceSearch(rotateArray,start,mid);
+                return sequenceSearch(rotateArray,start,end);
             if(rotateArray[mid]>=rotateArray[start])//处在前面。联合前面while条件
                 start=mid;
             else if(rotateArray[mid]<=rotateArray[end])
