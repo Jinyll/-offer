@@ -3,10 +3,6 @@
 class Solution {
 public:
     int Fibonacci(int n) {
-        /*int temp[2]={0,1};
-        if(n<2){
-            return temp[n];
-        }*/
         int f0=0;
         int f1=1;
         int res=n;
