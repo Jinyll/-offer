@@ -21,8 +21,6 @@ public:
                 if(k==1) return node;
                 else return nullptr;
             }
-            /*if(node==nullptr) return nullptr;//这个。自己搞的用例都正确，但牛客会说段溢出
-            node=node->next;*/
         }
         ListNode *res=pListHead;
         while(node->next!=nullptr)
