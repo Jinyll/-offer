@@ -16,8 +16,8 @@ public:
         if(!root) return res;
         path.push_back(root->val);
         if(expectNumber - root->val == 0 && !root->left && !root->right) res.push_back(path);
-        if(root->left) FindPath(root->left,expectNumber - root->val);
-        if(root->right) FindPath(root->right,expectNumber - root->val);
+        if(root->left && expectNumber - root->val >= 0) FindPath(root->left,expectNumber - root->val);
+        if(root->right && expectNumber - root->val >= 0) FindPath(root->right,expectNumber - root->val);
         path.pop_back();
         return res;
     }
