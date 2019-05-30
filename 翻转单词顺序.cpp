@@ -8,9 +8,9 @@ public:
         while(begin<end)
         {
             if (str[begin] != str[end])
-			         swap(str[begin], str[end]);
-		        ++begin;
-		        --end;
+		swap(str[begin], str[end]);
+	    ++begin;
+	    --end;
         }
     }
     string ReverseSentence(string str) {
