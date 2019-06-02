@@ -11,6 +11,27 @@ struct TreeNode {
 };*/
 class Solution {
 public:
+    //方法1 非递归 层次遍历，队列，嵌套while，一层节点总数是队列大小，while(size--)处理完一层后深度加1，再处理下一层
+    int TreeDepth(TreeNode* pRoot)
+    {
+        if(!pRoot) return 0;
+        queue<TreeNode*> q;
+        q.push(pRoot);
+        int depth=0;
+        while(!q.empty())
+        {
+            int size=q.size();
+            while(size--)
+            {
+                TreeNode* front=q.front();
+                q.pop();
+                if(front->left!=nullptr) q.push(front->left);
+                if(front->right!=nullptr) q.push(front->right);
+            }
+            ++depth;
+        }
+        return depth;
+    }
     //方法1 非递归
     int TreeDepth(TreeNode* pRoot)
     {//层次遍历
