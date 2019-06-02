@@ -1,0 +1,14 @@
+/*求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。*/
+//利用函数指针递归，注意类中使用函数指针，只能将成员函数定义为静态，因为如果想要使用非静态成员函数指针，需要定义具体函数对象，可现在还在类中，要么就要写构造函数，然后在函数里定义一个类对象，但该函数会被递归使用，定义很多类对象，反正麻烦，所以直接使用静态成员函数指针
+class Solution {
+public:
+    typedef int (*fun)(int);
+    static int terminate0(int n)
+    {
+        return 0;
+    }
+    static int Sum_Solution(int n) {
+        fun f[2]={terminate0,Sum_Solution};
+        return n+f[!!n](n-1);
+    }
+};
