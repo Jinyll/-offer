@@ -41,4 +41,29 @@ public:
             return res;
         }
     
+    //也可嵌套while把该层都处理完
+    vector<vector<int> > Print(TreeNode* pRoot) {
+        vector<vector<int> > result;
+        if(pRoot==nullptr)
+            return result;
+        queue<TreeNode*> q;
+        q.push(pRoot);
+        while(!q.empty())
+        {
+            int size=q.size();
+            vector<int> temp;
+            while(size--)
+            {
+                TreeNode* front=q.front();
+                q.pop();
+                temp.push_back(front->val);
+                if(front->left!=nullptr)
+                    q.push(front->left);
+                if(front->right!=nullptr)
+                    q.push(front->right);
+            }
+            result.push_back(temp);
+        }
+        return result;
+    }
 };
