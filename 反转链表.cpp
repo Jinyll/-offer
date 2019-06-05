@@ -1,5 +1,5 @@
 /*输入一个链表，反转链表后，输出新链表的表头。*/
-//pre之前是已经反转好的，node是当前待反转
+//curr之前是已经反转好的，curr最后指向结束节点，pre最后指向最后一个节点
 /*
 struct ListNode {
 	int val;
@@ -11,17 +11,16 @@ struct ListNode {
 class Solution {
 public:
     ListNode* ReverseList(ListNode* pHead) {
-        if(pHead==nullptr) return nullptr;
-        ListNode* node=pHead;
-        ListNode* pre=nullptr;
-        while(node->next!=nullptr)
+        if(!pHead) return nullptr;
+        ListNode *pre=nullptr;
+        ListNode *curr=pHead;
+        while(curr)
         {
-            ListNode* next=node->next;
-            node->next=pre;
-            pre=node;
-            node=next;
+            ListNode *next=curr->next;
+            curr->next=pre;
+            pre=curr;
+            curr=next;
         }
-        node->next=pre;
-        return node;
+        return pre;
     }
 };
