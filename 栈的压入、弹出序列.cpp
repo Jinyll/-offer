@@ -8,20 +8,20 @@ public:
         if(pushV.empty() || popV.empty()) return false;
         int pushp=0;
         int popp=0;
-        int length=pushV.size();
+        int length=popV.size();//给定是两个序列长度相等，其实应该判断下长度不同则直接返回false
         stack<int> s;
         while(popp<length)
         {
-            while(s.empty() || s.top()!=popV[popp])//不相等，若还有元素可压入，则压入，若没有，表明序列不对
+            while(s.empty() || s.top()!=popV[popp])//辅助栈为空，或栈顶与弹出序列当前值不相等，若还有元素可压入，则压入，否则break再break返回false
             {
                 if(pushp==length) break;
                 s.push(pushV[pushp]);
                 ++pushp;
             }
-            if(s.top()!=popV[popp]) break;
+            if(s.top()!=popV[popp]) break;//针对前面的break，或者12345和43512最后的21和弹出序列的12
             s.pop();
             ++popp;
-            if(s.empty() && popp==length) return true;
+            if(s.empty() && popp==length) return true;//如果栈为空且弹出序列到尾部则返回true
         }
         return false;
     }
