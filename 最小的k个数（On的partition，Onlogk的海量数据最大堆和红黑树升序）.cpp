@@ -31,7 +31,7 @@ public:
     vector<int> GetLeastNumbers_Solution(vector<int> input, int k) {
         vector<int> res;
         if(input.empty() || k>input.size() || k<=0) return res;
-        multiset<int,greater<int> > mset; //升序，最大元素在begin位置
+        multiset<int,greater<int> > mset; //降序，最大元素在begin位置
         for(int i=0;i<input.size();i++)
         {
             if(i<k) mset.insert(input[i]);
